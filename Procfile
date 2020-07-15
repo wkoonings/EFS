@@ -1,1 +1,1 @@
-web: gunicorn assign2.wsgi --log-file -
+web: gunicorn assign2.wsgi --timeout 15 --log-file -
