@@ -78,9 +78,9 @@ def stock_edit(request, pk):
             stock.save()
             stocks = Stock.objects.filter(purchase_date__lte=timezone.now())
             return render(request, 'portfolio/stock_list.html', {'stocks': stocks})
-        else:
+    else:
             # print("else")
-            form = StockForm(instance=stock)
+        form = StockForm(instance=stock)
         return render(request, 'portfolio/stock_edit.html', {'form': form})
 
 
@@ -126,9 +126,9 @@ def investment_edit(request, pk):
             investment.save()
             investments = Investment.objects.filter(acquired_date__lte=timezone.now())
             return render(request, 'portfolio/stock_list.html', {'investments': investments})
-        else:
-            # print("else")
-            form = InvestmentForm(instance=investment)
+    else:
+        # print("else")
+        form = InvestmentForm(instance=investment)
         return render(request, 'portfolio/investment_edit.html', {'form': form})
 
 
