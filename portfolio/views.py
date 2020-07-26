@@ -165,7 +165,8 @@ def portfolio(request,pk):
         sum_current_stocks_value += stock.current_stock_value()
         sum_of_initial_stock_value += stock.initial_stock_value()
 
-   return render(request, 'portfolio/portfolio.html', {'customers': customers,
+   return render(request, 'portfolio/portfolio.html', {'customer': customer,
+                                                       'customers': customers,
                                                        'investments': investments,
                                                        'stocks': stocks,
                                                        'sum_acquired_value': sum_acquired_value,
