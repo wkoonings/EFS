@@ -50,6 +50,9 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'portfolio',
     'crispy_forms',
+    'rest_framework',
+    'mathfilters',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
