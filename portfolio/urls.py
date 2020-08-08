@@ -1,7 +1,22 @@
 from django.conf.urls import url
+from rest_framework_jwt.views import obtain_jwt_token
+
 from . import views
-from django.urls import path
+from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
+
+api_urlpatterns = [
+    path('auth/', obtain_jwt_token),
+    path('', views.api_customer_list),
+    url(r'^customers/$', views.api_customer_list),
+    url(r'^customers/(?P<pk>[0-9]+)$', views.api_get_customer),
+    path('investements/', views.api_investment_list),
+    url(r'^investments/$', views.api_investment_list),
+    url(r'^investments/(?P<pk>[0-9]+)$', views.api_get_investment),
+    path('stocks/', views.api_stock_list),
+    url(r'^stocks/$', views.api_stock_list),
+    url(r'^stocks/(?P<pk>[0-9]+)$', views.api_get_stock)
+]
 
 app_name = 'portfolio'
 urlpatterns = [
@@ -20,7 +35,7 @@ urlpatterns = [
     path('investment/<int:pk>/delete/', views.investment_delete, name='investment_delete'),
     path('customer/<int:pk>/portfolio/', views.portfolio, name='portfolio'),
     url(r'^customers_json/', views.CustomerList.as_view()),
+    path('api/v1/', include(api_urlpatterns))
 ]
-
 
 urlpatterns = format_suffix_patterns(urlpatterns)

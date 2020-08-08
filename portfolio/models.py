@@ -52,6 +52,9 @@ class Investment(models.Model):
     def results_by_investment(self):
         return self.recent_value - self.acquired_value
 
+    def cust_number(self):
+        return self.customer.cust_number
+
 
 class Stock(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='stocks')
@@ -83,3 +86,6 @@ class Stock(models.Model):
 
     def current_stock_value(self):
         return float(self.current_stock_price()) * float(self.shares)
+
+    def cust_number(self):
+        return self.customer.cust_number
